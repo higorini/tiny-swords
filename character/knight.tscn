@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu6q6tbfhtmpu"]
+
+[ext_resource type="Texture2D" uid="uid://b55m5hq3g0n22" path="res://assets/Factions/Knights/Warrior.png" id="1_qw1rk"]
+[ext_resource type="Script" path="res://character/knight.gd" id="1_uq1bb"]
+
+[node name="Knight" type="CharacterBody2D"]
+script = ExtResource("1_uq1bb")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_qw1rk")
+hframes = 6
+vframes = 3
+
+[node name="Collision" type="CollisionShape2D" parent="."]
