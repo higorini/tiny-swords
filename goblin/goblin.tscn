@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://birb4nwdmbqhs"]
+[gd_scene load_steps=15 format=3 uid="uid://birb4nwdmbqhs"]
 
+[ext_resource type="Script" path="res://goblin/goblin.gd" id="1_c33lt"]
 [ext_resource type="Texture2D" uid="uid://biks1ln2j31o1" path="res://assets/Factions/Goblins/Torch.png" id="1_dlowx"]
 [ext_resource type="Texture2D" uid="uid://do2m81vcsnevv" path="res://assets/Dead_and_Fire/Dead/Dead.png" id="2_afdb5"]
 
@@ -317,12 +318,15 @@ _data = {
 }
 
 [node name="Goblin" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_c33lt")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 30.5)
 shape = SubResource("RectangleShape2D_hn3hr")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="Collision" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(0, 30)
@@ -343,3 +347,7 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_7m0kw")
 }
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]
