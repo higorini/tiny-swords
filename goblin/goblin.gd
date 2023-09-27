@@ -6,6 +6,7 @@ const OFFSET: Vector2 = Vector2(0, 31)
 @onready var animation: AnimationPlayer = get_node("Animation")
 @onready var texture: Sprite2D = get_node("Texture")
 @onready var auxiliar_animation: AnimationPlayer = get_node("AuxiliarAnimation")
+@onready var nav_agent: = $NavigationAgent2D as NavigationAgent2D
 
 @export var move_speed: float = 192.0
 @export var distance_threshold: float = 60.0
@@ -14,7 +15,7 @@ var player_ref: CharacterBody2D = null
 var health: int = 4
 var can_die: bool = false
 
-func _physics_process(_delta) -> void:
+func _physics_process(_delta: float) -> void:
 	if can_die:
 		return
 	
@@ -23,7 +24,7 @@ func _physics_process(_delta) -> void:
 		animate()
 		return
 	
-	var direction: Vector2 = global_position.direction_to(player_ref.global_position)
+	var direction: = to_local(nav_agent.get_next_path_position()).normalized()
 	var distance: float = global_position.distance_to(player_ref.global_position)
 	
 	if distance <= distance_threshold:
@@ -60,7 +61,6 @@ func animate() -> void:
 
 func update_health(value: int) -> void:
 	health -= value
-	print(health)
 	
 	if health <= 0:
 		can_die = true
@@ -79,3 +79,12 @@ func spawn_attack_area() -> void:
 	var attack_area = ATTACK_AREA.instantiate()
 	attack_area.position = OFFSET
 	add_child(attack_area)
+
+
+func make_path() -> void:
+	nav_agent.target_position = player_ref.global_position
+
+
+func _on_timer_timeout():
+	if player_ref != null:
+		make_path()

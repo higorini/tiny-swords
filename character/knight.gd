@@ -69,12 +69,10 @@ func _on_animation_finished(anim_name: String) -> void:
 
 func _on_attack_area_body_entered(body) -> void:
 	body.update_health(damage)
-	print(body)
 
 
 func update_health(value: int) -> void:
 	health -= value
-	print(health)
 	
 	if health <= 0:
 		can_die = true
