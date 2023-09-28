@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+
 const ATTACK_AREA: PackedScene = preload("res://goblin/enemy_attack_area.tscn")
 const OFFSET: Vector2 = Vector2(0, 31)
+const AUDIO_TEMPLATE: PackedScene = preload("res://management/audio_template.tscn")
+
 
 @onready var animation: AnimationPlayer = get_node("Animation")
 @onready var texture: Sprite2D = get_node("Texture")
@@ -99,3 +102,9 @@ func make_path() -> void:
 func _on_timer_timeout():
 	if player_ref != null:
 		make_path()
+
+
+func spawn_sfx(sfx_path: String) -> void:
+	var sfx = AUDIO_TEMPLATE.instantiate()
+	sfx.sfx_to_play = sfx_path
+	add_child(sfx)

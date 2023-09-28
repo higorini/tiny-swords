@@ -1,5 +1,6 @@
 extends Control
 
+
 func _ready() -> void:
 	for button in get_tree().get_nodes_in_group("button"):
 		button.pressed.connect(on_button_pressed.bind(button.name))

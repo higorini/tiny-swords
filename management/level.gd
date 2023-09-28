@@ -1,5 +1,6 @@
 extends Node2D
 
+
 @onready var interface: CanvasLayer = get_node("Interface")
 @onready var health_label: Label = interface.get_node("Health")
 @onready var score_label: Label = interface.get_node("Score")

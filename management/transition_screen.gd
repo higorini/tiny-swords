@@ -1,11 +1,14 @@
 extends CanvasLayer
 
+
 @onready var animation: AnimationPlayer = get_node("Animation")
+
 
 var scene_path: String = ""
 var can_quit: bool = false
 var player_health: int = 0
 var player_score: int = 0
+
 
 func fade_in(opt: bool = false) -> void:
 	if opt:
