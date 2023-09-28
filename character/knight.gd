@@ -11,6 +11,7 @@ const AUDIO_TEMPLATE: PackedScene = preload("res://management/audio_template.tsc
 @onready var dust: GPUParticles2D = get_node("Dust")
 
 
+@export var life: int = 3
 @export var health: int = 20
 @export var move_speed: float = 256.0
 @export var damage: int = 1
@@ -21,11 +22,16 @@ var can_die: bool = false
 
 
 func _ready() -> void:
+	if transition_screen.player_life != 3:
+		life = transition_screen.player_life
+		get_tree().call_group("level", "lose_life", transition_screen.player_life)
+	
 	if transition_screen.player_health != 0:
 		health = transition_screen.player_health
 		return
 		
 	transition_screen.player_health = health
+	transition_screen.player_life = life
 
 
 func _physics_process(_delta: float) -> void:
@@ -82,9 +88,19 @@ func _on_animation_finished(anim_name: String) -> void:
 			can_attack = true
 			
 		"death":
-			transition_screen.fade_in()
-			transition_screen.player_health = 0
-			transition_screen.player_score = 0
+			life -= 1
+			
+			if life > 0:
+				get_tree().call_group("level", "lose_life", life)
+				transition_screen.fade_in()
+				transition_screen.player_life = life
+				print(transition_screen.player_life)
+				transition_screen.player_health = 0
+				transition_screen.player_score = 0
+			else:
+				transition_screen.scene_path = "res://management/game_over.tscn"
+				transition_screen.fade_in()
+
 
 
 func _on_attack_area_body_entered(body) -> void:

@@ -8,6 +8,7 @@ var scene_path: String = ""
 var can_quit: bool = false
 var player_health: int = 0
 var player_score: int = 0
+var player_life: int = 3
 
 
 func fade_in(opt: bool = false) -> void:

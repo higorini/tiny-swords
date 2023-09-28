@@ -34,3 +34,15 @@ func increase_kill_count() -> void:
 
 func update_score(new_score: int) -> void:
 	score_label.text = "Score: " + str(new_score)
+
+
+func lose_life(actual_life: int) -> void:
+	var life_prefix = "Life"
+	
+	for lives in get_tree().get_nodes_in_group("life"):
+		var life_name = lives.name
+		
+		if life_name.begins_with(life_prefix):
+			var life_number = int(life_name.substr(life_prefix.length()))
+			if life_number > actual_life:
+				lives.queue_free()
