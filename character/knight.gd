@@ -11,7 +11,7 @@ const AUDIO_TEMPLATE: PackedScene = preload("res://management/audio_template.tsc
 @onready var dust: GPUParticles2D = get_node("Dust")
 
 
-@export var health: int = 10
+@export var health: int = 20
 @export var move_speed: float = 256.0
 @export var damage: int = 1
 

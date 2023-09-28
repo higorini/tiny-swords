@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://c322c3avsxmn1"]
+
+[ext_resource type="Script" path="res://management/credits.gd" id="1_22h6n"]
+[ext_resource type="FontFile" uid="uid://7nkkkmyx1hve" path="res://assets/fonts/kurland.ttf" id="1_h7pyh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v5ol0"]
+font = ExtResource("1_h7pyh")
+font_size = 64
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_22h6n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.5
+offset_top = -90.5
+offset_right = 268.5
+offset_bottom = -19.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Obrigado por jogar!"
+label_settings = SubResource("LabelSettings_v5ol0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="Button" parent="ColorRect" groups=["button"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.5
+offset_top = 1.0
+offset_right = 198.5
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_h7pyh")
+theme_override_font_sizes/font_size = 32
+text = "Voltar para o menu principal"
+
+[node name="Quit" type="Button" parent="ColorRect" groups=["button"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.5
+offset_top = 56.0
+offset_right = 198.5
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_h7pyh")
+theme_override_font_sizes/font_size = 32
+text = "Sair do jogo"

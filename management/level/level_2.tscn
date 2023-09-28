@@ -5,6 +5,7 @@
 
 [node name="Level" instance=ExtResource("1_a8btj")]
 target_kill_count = 6
+next_level_scene_path = "res://management/credits.tscn"
 current_level_scene_path = "res://management/level/level_2.tscn"
 
 [node name="Grass" parent="Terrain" index="1"]
@@ -13,122 +14,77 @@ layer_0/tile_data = PackedInt32Array(262155, 65536, 1, 196619, 65536, 1, 262154,
 [node name="Decoration" parent="Terrain" index="2"]
 layer_0/tile_data = PackedInt32Array(196610, 0, 0, 131094, 0, 0, 196604, 0, 0, 851970, 0, 0, -327676, 1, 0, -262126, 1, 0, 458759, 1, 0, 12, 5, 0, 13, 4, 0, 14, 3, 0, 524301, 5, 0, 851974, 5, 0, 327714, 5, 0, -917477, 5, 0, -262136, 4, 0, 327685, 4, 0, 30, 3, 0, -393200, 3, 0, 458769, 3, 0, 983055, 2, 0, 1179670, 2, 0, 1310717, 2, 0, 327666, 2, 0, -1114112, 2, 0, 1114134, 5, 0, 1048590, 5, 0, 262129, 5, 0, -786410, 5, 0, -655340, 5, 0, -851948, 5, 0, -589798, 5, 0, -851972, 5, 0, -851971, 5, 0, -917500, 5, 0, -851963, 5, 0, 655381, 3, 0, 720917, 3, 0, 786453, 3, 0, 851989, 3, 0)
 
-[node name="Tree" parent="Decoration" index="0"]
-position = Vector2(1371, -157)
+[node name="Goblin" parent="YSort" index="16"]
+position = Vector2(1226, 1220)
 
-[node name="Tree2" parent="Decoration" index="1"]
-position = Vector2(757, 472)
+[node name="Goblin4" parent="YSort" index="19"]
+position = Vector2(-4, 1068)
 
-[node name="Tree3" parent="Decoration" index="2"]
-position = Vector2(429, -98)
-
-[node name="Tree4" parent="Decoration" index="3"]
-position = Vector2(-30, -711)
-
-[node name="Tree5" parent="Decoration" index="4"]
-position = Vector2(41, -674)
-
-[node name="Tree6" parent="Decoration" index="5"]
-position = Vector2(110, -615)
-
-[node name="Tree7" parent="Decoration" index="6"]
-position = Vector2(175, -552)
-
-[node name="Tree8" parent="Decoration" index="7"]
-position = Vector2(603, -723)
-
-[node name="Tree9" parent="Decoration" index="8"]
-position = Vector2(1407, -913)
-
-[node name="Tree10" parent="Decoration" index="9"]
-position = Vector2(242, 452)
-
-[node name="Tree11" parent="Decoration" index="10"]
-position = Vector2(1072, 1292)
-
-[node name="Tree12" parent="Decoration" index="11"]
-position = Vector2(1333, 602)
-
-[node name="Tree13" parent="Decoration" index="12"]
-position = Vector2(-280, 1105)
-
-[node name="Tree14" parent="Decoration" index="13"]
-position = Vector2(-721, 49)
-
-[node name="Tree15" parent="Decoration" index="14"]
-position = Vector2(-625, 49)
-
-[node name="WaterRocks" parent="Decoration" index="15"]
+[node name="WaterRocks" parent="Decoration" index="0"]
 position = Vector2(-924, 568)
 
-[node name="WaterRocks2" parent="Decoration" index="16"]
+[node name="WaterRocks2" parent="Decoration" index="1"]
 position = Vector2(-1077, 111)
 
-[node name="WaterRocks3" parent="Decoration" index="17"]
+[node name="WaterRocks3" parent="Decoration" index="2"]
 position = Vector2(-287, -1078)
 
-[node name="WaterRocks4" parent="Decoration" index="18"]
+[node name="WaterRocks4" parent="Decoration" index="3"]
 position = Vector2(-95, -392)
 
-[node name="WaterRocks5" parent="Decoration" index="19"]
+[node name="WaterRocks5" parent="Decoration" index="4"]
 position = Vector2(242, 0)
 
-[node name="WaterRocks6" parent="Decoration" index="20"]
+[node name="WaterRocks6" parent="Decoration" index="5"]
 position = Vector2(-223, 698)
 
-[node name="WaterRocks7" parent="Decoration" index="21"]
+[node name="WaterRocks7" parent="Decoration" index="6"]
 position = Vector2(-223, 1388)
 
-[node name="WaterRocks8" parent="Decoration" index="22"]
+[node name="WaterRocks8" parent="Decoration" index="7"]
 position = Vector2(757, 910)
 
-[node name="WaterRocks9" parent="Decoration" index="23"]
+[node name="WaterRocks9" parent="Decoration" index="8"]
 position = Vector2(1168, 1580)
 
-[node name="WaterRocks10" parent="Decoration" index="24"]
+[node name="WaterRocks10" parent="Decoration" index="9"]
 position = Vector2(2305, 145)
 
-[node name="WaterRocks11" parent="Decoration" index="25"]
+[node name="WaterRocks11" parent="Decoration" index="10"]
 position = Vector2(1215, 391)
 
-[node name="WaterRocks16" parent="Decoration" index="30"]
+[node name="WaterRocks16" parent="Decoration" index="15"]
 position = Vector2(731, -627)
 
-[node name="WaterRocks17" parent="Decoration" index="31"]
+[node name="WaterRocks17" parent="Decoration" index="16"]
 position = Vector2(1864, -456)
 
-[node name="GreatWaterRocks" parent="Decoration" index="32"]
+[node name="GreatWaterRocks" parent="Decoration" index="17"]
 position = Vector2(976, -456)
 
-[node name="GreatWaterRocks2" parent="Decoration" index="33"]
+[node name="GreatWaterRocks2" parent="Decoration" index="18"]
 position = Vector2(306, 47)
 
-[node name="GreatWaterRocks3" parent="Decoration" index="34"]
+[node name="GreatWaterRocks3" parent="Decoration" index="19"]
 position = Vector2(1606, -328)
 
-[node name="GreatWaterRocks4" parent="Decoration" index="35"]
+[node name="GreatWaterRocks4" parent="Decoration" index="20"]
 position = Vector2(1542, 391)
 
-[node name="GreatWaterRocks5" parent="Decoration" index="36"]
+[node name="GreatWaterRocks5" parent="Decoration" index="21"]
 position = Vector2(912, 846)
 
-[node name="GreatWaterRocks6" parent="Decoration" index="37"]
+[node name="GreatWaterRocks6" parent="Decoration" index="22"]
 position = Vector2(-55, 782)
 
-[node name="GreatWaterRocks7" parent="Decoration" index="38"]
+[node name="GreatWaterRocks7" parent="Decoration" index="23"]
 position = Vector2(-867, 111)
 
-[node name="GreatWaterRocks8" parent="Decoration" index="39"]
+[node name="GreatWaterRocks8" parent="Decoration" index="24"]
 position = Vector2(-287, -648)
 
-[node name="Goblin" parent="." index="3"]
-position = Vector2(1237, 1292)
-
-[node name="Goblin5" parent="." index="6" instance=ExtResource("2_q6sfb")]
+[node name="Goblin5" parent="." index="4" instance=ExtResource("2_q6sfb")]
 position = Vector2(-771, 295)
 
-[node name="Goblin6" parent="." index="7" instance=ExtResource("2_q6sfb")]
+[node name="Goblin6" parent="." index="5" instance=ExtResource("2_q6sfb")]
 position = Vector2(-81, -913)
-
-[node name="Goblin4" parent="." index="8"]
-position = Vector2(-30, 1134)
