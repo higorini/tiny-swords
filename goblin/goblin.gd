@@ -9,7 +9,7 @@ const OFFSET: Vector2 = Vector2(0, 31)
 @onready var nav_agent: = $NavigationAgent2D as NavigationAgent2D
 
 @export var move_speed: float = 192.0
-@export var distance_threshold: float = 60.0
+@export var distance_threshold: float = 40.0
 
 var player_ref: CharacterBody2D = null
 var health: int = 4
@@ -25,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	var direction: = to_local(nav_agent.get_next_path_position()).normalized()
-	var distance: float = global_position.distance_to(player_ref.global_position)
+	var distance: float = global_position.distance_to(player_ref.global_position) - distance_threshold
 	
 	if distance <= distance_threshold:
 		animation.play("attack")

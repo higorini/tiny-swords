@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Tiny Swords"
-run/main_scene="res://management/level.tscn"
+config/name="Tiny Goblins"
+run/main_scene="res://management/menu.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
+
+[autoload]
+
+transition_screen="*res://management/transition_screen.tscn"
 
 [input]
 
