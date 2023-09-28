@@ -101,6 +101,7 @@ font = ExtResource("2_tuejg")
 font_size = 64
 
 [node name="TransitionScreen" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_s2jdv")
 
 [node name="Background" type="ColorRect" parent="."]

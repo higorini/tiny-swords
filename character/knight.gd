@@ -4,13 +4,24 @@ extends CharacterBody2D
 @onready var texture: Sprite2D = get_node("Texture")
 @onready var attack_area_collision: CollisionShape2D = get_node("AttackArea/Collision")
 @onready var auxiliar_animation: AnimationPlayer = get_node("AuxiliarAnimation")
+@onready var dust: GPUParticles2D = get_node("Dust")
+
 
 @export var health: int = 10
 @export var move_speed: float = 256.0
 @export var damage: int = 1
 
+
 var can_attack: bool = true
 var can_die: bool = false
+
+
+func _ready() -> void:
+	if transition_screen.player_health != 0:
+		health = transition_screen.player_health
+		return
+		
+	transition_screen.player_health = health
 
 
 func _physics_process(_delta: float) -> void:
@@ -46,15 +57,18 @@ func animate() -> void:
 		attack_area_collision.position.x = -58
 	
 	if velocity != Vector2.ZERO:
+		dust.emitting = true
 		animation.play("run")
 		return
 		
+	dust.emitting = false
 	animation.play("idle")
 
 
 func attack_handler() -> void:
 	if Input.is_action_just_pressed("attack_button") and can_attack:
 		can_attack = false
+		dust.emitting = false
 		animation.play("attack")
 
 
@@ -65,6 +79,8 @@ func _on_animation_finished(anim_name: String) -> void:
 			
 		"death":
 			transition_screen.fade_in()
+			transition_screen.player_health = 0
+			transition_screen.player_score = 0
 
 
 func _on_attack_area_body_entered(body) -> void:
@@ -73,6 +89,8 @@ func _on_attack_area_body_entered(body) -> void:
 
 func update_health(value: int) -> void:
 	health -= value
+	transition_screen.player_health = health
+	get_tree().call_group("level", "update_health", health)
 	
 	if health <= 0:
 		can_die = true

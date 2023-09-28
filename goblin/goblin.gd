@@ -7,13 +7,18 @@ const OFFSET: Vector2 = Vector2(0, 31)
 @onready var texture: Sprite2D = get_node("Texture")
 @onready var auxiliar_animation: AnimationPlayer = get_node("AuxiliarAnimation")
 @onready var nav_agent: = $NavigationAgent2D as NavigationAgent2D
+@onready var dust: GPUParticles2D = get_node("Dust")
+
 
 @export var move_speed: float = 192.0
 @export var distance_threshold: float = 40.0
+@export var score: int = 1
+
 
 var player_ref: CharacterBody2D = null
 var health: int = 4
 var can_die: bool = false
+
 
 func _physics_process(_delta: float) -> void:
 	if can_die:
@@ -29,6 +34,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if distance <= distance_threshold:
 		animation.play("attack")
+		dust.emitting = false
 		return
 	
 	velocity = direction * move_speed
@@ -53,9 +59,11 @@ func animate() -> void:
 		texture.flip_h = true
 
 	if velocity != Vector2.ZERO:
+		dust.emitting = true
 		animation.play("run")
 		return
 		
+	dust.emitting = false
 	animation.play("idle")
 
 
@@ -63,6 +71,8 @@ func update_health(value: int) -> void:
 	health -= value
 	
 	if health <= 0:
+		transition_screen.player_score += score
+		get_tree().call_group("level", "update_score", transition_screen.player_score)
 		can_die = true
 		animation.play("death")
 		return

@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://hri04lfvxl1e"]
+
+[ext_resource type="Texture2D" uid="uid://303alm3ip1i6" path="res://assets/Terrain/Decorations/Rocks_04.png" id="1_7b4rl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu4vu"]
+atlas = ExtResource("1_7b4rl")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7qt3"]
+atlas = ExtResource("1_7b4rl")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa67q"]
+atlas = ExtResource("1_7b4rl")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aua63"]
+atlas = ExtResource("1_7b4rl")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6klio"]
+atlas = ExtResource("1_7b4rl")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_713co"]
+atlas = ExtResource("1_7b4rl")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1bgb"]
+atlas = ExtResource("1_7b4rl")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfgkj"]
+atlas = ExtResource("1_7b4rl")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5kkhc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu4vu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7qt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa67q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aua63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6klio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_713co")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1bgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfgkj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="GreatWaterRocks" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_5kkhc")
+autoplay = "default"
