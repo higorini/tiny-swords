@@ -1,21 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cydafy16a8mue"]
+[gd_scene load_steps=9 format=3 uid="uid://cydafy16a8mue"]
 
 [ext_resource type="Script" path="res://management/transition_screen.gd" id="1_s2jdv"]
-
-[sub_resource type="Animation" id="Animation_lner3"]
-resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
+[ext_resource type="FontFile" uid="uid://7nkkkmyx1hve" path="res://assets/fonts/kurland.ttf" id="2_tuejg"]
 
 [sub_resource type="Animation" id="Animation_vmxo5"]
 length = 0.001
@@ -30,6 +16,33 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpecialMessage:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lner3"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_dsjmt"]
@@ -47,12 +60,45 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_sxjmy"]
+resource_name = "special_fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpecialMessage:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_81755"]
 _data = {
 "RESET": SubResource("Animation_vmxo5"),
 "fade_in": SubResource("Animation_lner3"),
-"fade_out": SubResource("Animation_dsjmt")
+"fade_out": SubResource("Animation_dsjmt"),
+"special_fade_in": SubResource("Animation_sxjmy")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_oto58"]
+font = ExtResource("2_tuejg")
+font_size = 64
 
 [node name="TransitionScreen" type="CanvasLayer"]
 script = ExtResource("1_s2jdv")
@@ -71,5 +117,23 @@ autoplay = "fade_out"
 libraries = {
 "": SubResource("AnimationLibrary_81755")
 }
+
+[node name="SpecialMessage" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.5
+offset_top = -35.5
+offset_right = 254.5
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Onda Finalizada!!!!"
+label_settings = SubResource("LabelSettings_oto58")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

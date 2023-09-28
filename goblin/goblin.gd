@@ -72,6 +72,7 @@ func update_health(value: int) -> void:
 
 func _on_animation_animation_finished(anim_name: String) -> void:
 	if anim_name == "death":
+		get_tree().call_group("level", "increase_kill_count")
 		queue_free()
 
 
